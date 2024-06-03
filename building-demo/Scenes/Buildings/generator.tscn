@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://s30fivksp6qm"]
+
+[ext_resource type="Texture2D" uid="uid://dqhmn0bvqillf" path="res://Graphics/Sprites/buildings.png" id="1_n2du1"]
+[ext_resource type="Script" path="res://Scenes/Buildings/Generator.cs" id="2_4q1ui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xnn1"]
+atlas = ExtResource("1_n2du1")
+region = Rect2(0, 16, 16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_066dl"]
+size = Vector2(16, 32)
+
+[node name="Generator" type="StaticBody2D"]
+script = ExtResource("2_4q1ui")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_2xnn1")
+offset = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_066dl")
