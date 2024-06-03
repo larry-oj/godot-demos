@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cusisct3enmuj"]
+[gd_scene load_steps=4 format=3 uid="uid://cusisct3enmuj"]
 
-[ext_resource type="Texture2D" uid="uid://dqhmn0bvqillf" path="res://Graphics/Sprites/buildings.png" id="1_4o0es"]
+[ext_resource type="Texture2D" uid="uid://d28a84mono1e2" path="res://Graphics/Buildings/furnace_sprite.tres" id="2_320c3"]
 [ext_resource type="Script" path="res://Scenes/Buildings/Furnace.cs" id="2_dsm72"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ew71b"]
-atlas = ExtResource("1_4o0es")
-region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1xes"]
 size = Vector2(16, 16)
@@ -14,7 +10,7 @@ size = Vector2(16, 16)
 script = ExtResource("2_dsm72")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_ew71b")
+texture = ExtResource("2_320c3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g1xes")

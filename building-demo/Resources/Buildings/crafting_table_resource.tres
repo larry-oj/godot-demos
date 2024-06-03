@@ -1,11 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://tjbmnfrunucm"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://tjbmnfrunucm"]
 
 [ext_resource type="PackedScene" uid="uid://cnmuqxk0n3eyp" path="res://Scenes/Buildings/crafting_table.tscn" id="1_nj4bo"]
+[ext_resource type="Texture2D" uid="uid://buknnxgulaj46" path="res://Graphics/Buildings/crafting_table_sprite.tres" id="2_6n02s"]
 [ext_resource type="Script" path="res://Resources/Buildings/BuildingResource.cs" id="2_djv2b"]
 
 [resource]
 resource_name = "CraftingTableResource"
 script = ExtResource("2_djv2b")
+Sprite = ExtResource("2_6n02s")
 Scene = ExtResource("1_nj4bo")
 AtlasCoordinates = Vector2i(1, 0)
 Dimensions = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, -1), Vector2i(1, 0), Vector2i(1, -1)])

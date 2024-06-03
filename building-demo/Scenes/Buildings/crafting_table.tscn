@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnmuqxk0n3eyp"]
+[gd_scene load_steps=4 format=3 uid="uid://cnmuqxk0n3eyp"]
 
-[ext_resource type="Texture2D" uid="uid://dqhmn0bvqillf" path="res://Graphics/Sprites/buildings.png" id="1_bkmqi"]
 [ext_resource type="Script" path="res://Scenes/Buildings/CraftingTable.cs" id="2_bvo6m"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnwvs"]
-atlas = ExtResource("1_bkmqi")
-region = Rect2(16, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://buknnxgulaj46" path="res://Graphics/Buildings/crafting_table_sprite.tres" id="2_u5frm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gd7g"]
 size = Vector2(32, 32)
@@ -14,7 +10,7 @@ size = Vector2(32, 32)
 script = ExtResource("2_bvo6m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_rnwvs")
+texture = ExtResource("2_u5frm")
 offset = Vector2(8, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

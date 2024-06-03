@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwnqmddcs3vre"]
+[gd_scene load_steps=9 format=3 uid="uid://bwnqmddcs3vre"]
 
 [ext_resource type="TileSet" uid="uid://bs8guj8nixfvb" path="res://Graphics/world_tileset.tres" id="1_ifv8v"]
 [ext_resource type="Script" path="res://Scenes/ObjectPlacing.cs" id="1_rl8b8"]
 [ext_resource type="Resource" uid="uid://64mmi8su77ua" path="res://Resources/Buildings/furnace_resource.tres" id="2_luu5i"]
 [ext_resource type="Resource" uid="uid://h0g2amqmjlet" path="res://Resources/Buildings/generator_resource.tres" id="3_q3jof"]
 [ext_resource type="Resource" uid="uid://tjbmnfrunucm" path="res://Resources/Buildings/crafting_table_resource.tres" id="4_mj4po"]
+[ext_resource type="Script" path="res://Scenes/Building.cs" id="5_6und0"]
+[ext_resource type="PackedScene" uid="uid://dve6kbgq3chhh" path="res://Scenes/Components/StateMachine/state_machine.tscn" id="6_61ohx"]
+[ext_resource type="Script" path="res://Scenes/Game.cs" id="7_j5s8f"]
 
 [node name="ObjectPlacing" type="Node2D"]
 script = ExtResource("1_rl8b8")
-_buildings = Array[Resource]([ExtResource("2_luu5i"), ExtResource("3_q3jof"), ExtResource("4_mj4po")])
 
 [node name="TileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
@@ -26,3 +28,60 @@ layer_2/tile_data = PackedInt32Array()
 [node name="Camera" type="Camera2D" parent="."]
 unique_name_in_owner = true
 zoom = Vector2(2.71, 2.71)
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("_initialState") instance=ExtResource("6_61ohx")]
+unique_name_in_owner = true
+_initialState = NodePath("Game")
+
+[node name="Game" type="Node" parent="StateMachine" node_paths=PackedStringArray("_buildingState")]
+script = ExtResource("7_j5s8f")
+_buildingState = NodePath("../Building")
+
+[node name="Building" type="Node" parent="StateMachine" node_paths=PackedStringArray("_gameState")]
+script = ExtResource("5_6und0")
+_gameState = NodePath("../Game")
+_buildings = Array[Resource]([ExtResource("4_mj4po"), ExtResource("2_luu5i"), ExtResource("3_q3jof")])
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+text = "Mode: "
+
+[node name="ModeLabel" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 35
+
+[node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Swap with [B]"

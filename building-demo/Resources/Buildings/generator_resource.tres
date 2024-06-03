@@ -1,11 +1,13 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://h0g2amqmjlet"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://h0g2amqmjlet"]
 
 [ext_resource type="PackedScene" uid="uid://s30fivksp6qm" path="res://Scenes/Buildings/generator.tscn" id="1_khtud"]
+[ext_resource type="Texture2D" uid="uid://58dkiskpuah7" path="res://Graphics/Buildings/generator_sprite.tres" id="2_orm5o"]
 [ext_resource type="Script" path="res://Resources/Buildings/BuildingResource.cs" id="2_vyxsl"]
 
 [resource]
 resource_name = "GeneratorResource"
 script = ExtResource("2_vyxsl")
+Sprite = ExtResource("2_orm5o")
 Scene = ExtResource("1_khtud")
 AtlasCoordinates = Vector2i(0, 1)
 Dimensions = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, -1)])

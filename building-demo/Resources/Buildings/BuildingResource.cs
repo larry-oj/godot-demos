@@ -6,6 +6,10 @@ namespace buildingdemo.Resources.Buildings;
 public partial class BuildingResource : Resource
 {
 	/// <summary>
+	/// Sprite of the building.
+	/// </summary>
+	[Export] public AtlasTexture Sprite { get; protected set; }
+	/// <summary>
 	/// Scene of the building.
 	/// </summary>
 	[Export] public PackedScene Scene { get; protected set; }
